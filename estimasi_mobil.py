@@ -17,9 +17,12 @@ if st.button('Estimasi Harga'):
     predict = model.predict(
         [[years, mileage, tax, mpg, engine_size]]
         )
+    
     harga_ponds = float(predict[0])
     harga_rupiah = harga_ponds * 18000
+    
+    format_pounds = f"£ {harga_ponds:,.2f}"
     format_rupiah = f"Rp {harga_rupiah:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
     
-    st.write('Estimasi Harga Mobil Bekas dalam ponds: ', predict)
-    st.write('Estimasi Harga Mobil Bekas dalam rupiah: ', predict * 18000)
+    st.write('Estimasi Harga Mobil Bekas dalam ponds: ', format_pounds)
+    st.write('Estimasi Harga Mobil Bekas dalam rupiah: ', format_rupiah)
